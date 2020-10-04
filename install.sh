@@ -102,7 +102,7 @@ done
 # Generate public-private key pair needed to login to dropbear as root
 if [ ! -f /etc/dropbear-initramfs/id_rsa ]; then
     ssh-keygen -t rsa -N '' -f /etc/dropbear-initramfs/id_rsa
-    cat /etc/dropbear-initramfs/id_rsa/id_rsa.pub >>/etc/dropbear-initramfs/authorized_keys
+    cat /etc/dropbear-initramfs/id_rsa.pub >>/etc/dropbear-initramfs/authorized_keys
     chmod 600 /etc/dropbear-initramfs/authorized_keys
 fi
 
