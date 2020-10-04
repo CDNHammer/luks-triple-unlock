@@ -20,7 +20,7 @@ Ways to unlock your machine:
 - with an USB flash drive. Copy .keyfile (or the file you provided on the commandline to ./install.sh) to any ext(2/3/4)/fat32/ntfs partition on an USB flash drive. Stick it in the machine and boot, it should boot straight through.
 
 Optional:
-- edit /etc/dropbear-initramfs/config, uncomment and edit `DROPBEAR_OPTIONS=""` to add `"-s -j -k -I 60 -p 4748"`. -s disallows password logins, -j and -k prevent port forwarding, -I sets a timeout, and -p sets the ssh port. I recomment using an alternate ssh port, in my example port 4748. Otherwise you might encounter warnings about a possible man-in-the-middle attack since you shouldn't be sharing your actual host keys with dropbear (they'd be stored decrypted in /boot).
+- edit /etc/dropbear-initramfs/config, uncomment and edit `DROPBEAR_OPTIONS=""` to add `"-s -j -k -I 60 -p 4748"`. -s disallows password logins, -j and -k prevent port forwarding, -I sets a timeout, and -p sets the ssh port. I recommend using an alternate ssh port, in my example port 4748. Otherwise you might encounter warnings about a possible man-in-the-middle attack since you shouldn't be sharing your actual host keys with dropbear (they'd be stored decrypted in /boot).
 - the ip-address wil be set by dhcp, if you don't have your router configured to hand out semi-fixed ip's by mac or you have multiple network interfaces or just want to set a fixed ip you should probably edit /etc/initramfs-tools/conf.d/dropbear and change the IP value:
 ```DROPBEAR=y
   # See http://www.kernel.org/doc/Documentation/filesystems/nfs/nfsroot.txt.
