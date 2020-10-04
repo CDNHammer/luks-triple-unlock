@@ -60,7 +60,7 @@ KEYFILE="$CRYPTTAB_KEY"
 
 # maximum time to sleep waiting for devices to become ready before
 # asking for passphrase
-MAX_SECONDS=2
+MAX_SECONDS=5
 
 # is plymouth available? default false
 PLYMOUTH=$FALSE
