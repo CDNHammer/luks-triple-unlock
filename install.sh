@@ -286,7 +286,11 @@ echo "DONE!"
 echo 
 echo "Copy /etc/dropbead-initramfs/id_rsa to your local machine."
 echo "This is the private key you need to log into dropbear (no password, root@machinename)."
-echo "A better option is to add your own public key to /etc/dropbear-initramfs/authorized_keys and rerun update-initramfs -u -k \`uname -r\`"
+echo "A better option is to add your own public key to /etc/dropbear-initramfs/authorized_keys and rerun update-initramfs -u"
+echo "eg: sudo bash -c 'cat id_rsa.pub >> /etc/dropbear-initramfs/authorized_keys'"
+echo "    sudo update-initramfs -u"
+echo "Note: I recommend adding the additional options to the authorized_keys file at the beginning of every line.
+echo "no-port-forwarding,no-agent-forwarding,no-x11-forwarding,command=\"/bin/unlock\" ssh-rsa ..."
 echo 
 echo "Make sure you have a safe boot option before rebooting."
 echo "************************************************************************"
