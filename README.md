@@ -16,7 +16,7 @@ Usage:
 
 Ways to unlock your machine:
 - from the console
-- from SSH. Copy /etc/initramfs-tools/root/.ssh/id_rsa, this is the private key you need to log into dropbear (no password, root@machinename). When you connect it will ask you for the passphrase to unlock the machine.
+- from SSH. Copy /etc/initramfs-tools/root/.ssh/id_rsa, this is the private key you need to log into dropbear (no password, root@host). When you connect it will ask you for the passphrase to unlock the machine.
 - with an USB flash drive. Copy .keyfile (or the file you provided on the commandline to ./install.sh) to any ext(2/3/4)/fat32/ntfs partition on an USB flash drive. Stick it in the machine and boot, it should boot straight through.
 
 Optional:
