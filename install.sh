@@ -60,6 +60,7 @@ grep -q '^nls_cp437$' /etc/initramfs-tools/modules || echo 'nls_cp437' >> /etc/i
 grep -q '^nls_iso8859_1$' /etc/initramfs-tools/modules || echo 'nls_iso8859_1' >> /etc/initramfs-tools/modules
 grep -q '^nls_utf8$' /etc/initramfs-tools/modules || echo 'nls_utf8' >> /etc/initramfs-tools/modules
 grep -q '^nls_base$' /etc/initramfs-tools/modules || echo 'nls_base' >> /etc/initramfs-tools/modules
+grep -q '^nls_ascii$' /etc/initramfs-tools/modules || echo 'nls_ascii' >> /etc/initramfs-tools/modules
 
 #Setup cryptkey
 cp crypto-usb-key.sh /usr/local/sbin/
@@ -71,7 +72,7 @@ sed -i "/$cryptUUID/ s/,keyscript=[^, \t]*//" /etc/crypttab
 sed -i "/$cryptUUID/ s/\$/,keyscript=\/usr\/local\/sbin\/crypto-usb-key.sh/" /etc/crypttab
 
 #Dropbear ssh unlock
-apt-get install -y dropbear initramfs-tools busybox
+apt-get install -y dropbear-initramfs initramfs-tools busybox
 
 #Add network drivers
 ifaces=$(ip addr|egrep "^[0-9]*: "|egrep -v "^[0-9]*: lo:"|awk '{print $2}'|sed 's/:$//g')
