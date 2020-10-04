@@ -1,7 +1,7 @@
 # luks-triple-unlock
 Set of shell scripts to allow unlocking of full disk encrypted Ubuntu and Debian installs through console, USB-key or SSH.
 
-Use at your own risk, I'm not responsable for any damage this script might do to your system, make backups, make sure you have a safe boot option, test it in a VM first... etc. etc.
+Use at your own risk, I'm not responsible for any damage this script might do to your system, make backups, make sure you have a safe boot option, test it in a VM first... etc. etc.
 
 Tested on:
 - Ubuntu server 14.10-16.04 (no desktop)
