@@ -7,6 +7,10 @@ Tested on:
 - Ubuntu server 14.10-16.04 (no desktop)
 - Debian 7.8-8.3 (no desktop)
 
+Partially tested on:
+- Debian 10.6 (headless)
+*Unlocking via SSH is functional as is from the console. Have yet to test with a USB flast drive.
+
 Usage:
 - Install Ubuntu server or Debian with full disk encrypted LVM
 - `sudo apt-get install -y git-core`
