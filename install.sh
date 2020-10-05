@@ -84,7 +84,7 @@ for iface in $ifaces; do
     fi
 done
 
-#explicitely enable dropbear (=default behavior), won't touch existing setting if any
+#explicitly enable dropbear (=default behavior), won't touch existing setting if any
 (grep -qs '^DROPBEAR=' /etc/initramfs-tools/conf.d/dropbear || \
  grep '^DROPBEAR=' /etc/initramfs-tools/initramfs.conf || \
  echo 'DROPBEAR=y' \
