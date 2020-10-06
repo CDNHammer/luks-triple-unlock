@@ -14,13 +14,13 @@ KEYFILEPATH="$1"
 if [ -z "$KEYFILEPATH" ]; then
     KEYFILEPATH=".keyfile"
     KEYFILE="$KEYFILEPATH"
-	if [ ! -f "$KEYFILEPATH" ]; then
+    if [ ! -f "$KEYFILEPATH" ]; then
         echo "Generating key \"$KEYFILE\", this should go on your USB stick."
         apt-get install -y sharutils
         head -c 2880 /dev/urandom | uuencode -m - | head -n 65 | tail -n 64 > "$KEYFILE"
     else
         echo "Using existing key \"$KEYFILE\", this should go on your USB stick."
-	fi
+    fi
 elif [ ! -f "$KEYFILEPATH" ]; then
     echo "Keyfile \"$KEYFILEPATH\" not found, exiting."
     exit 1;
@@ -79,8 +79,8 @@ ifaces=$(ip addr|egrep "^[0-9]*: "|egrep -v "^[0-9]*: lo:"|awk '{print $2}'|sed 
 for iface in $ifaces; do
     if [ -f /sys/class/net/$iface/device/uevent ]; then
         echo "Found interface $iface"
-		ifacemod="$(grep DRIVER /sys/class/net/$iface/device/uevent |awk -F'=' '{print $2}')"
-		grep -q "^$ifacemod$" /etc/initramfs-tools/modules || echo "$ifacemod" >> /etc/initramfs-tools/modules
+	ifacemod="$(grep DRIVER /sys/class/net/$iface/device/uevent |awk -F'=' '{print $2}')"
+	grep -q "^$ifacemod$" /etc/initramfs-tools/modules || echo "$ifacemod" >> /etc/initramfs-tools/modules
     fi
 done
 
@@ -237,7 +237,7 @@ esac
 if [ "\${DROPBEAR}" != "n" ] && [ -r "/etc/crypttab" ] ; then
     #run unlock on ssh login
     echo unlock>>"\${DESTDIR}/etc/profile"
-	#write the unlock script
+    #write the unlock script
     cat > "\${DESTDIR}/bin/unlock" << EOF
 #!/bin/sh
 
