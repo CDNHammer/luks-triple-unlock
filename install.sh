@@ -212,48 +212,6 @@ EOF
 chmod +x /etc/initramfs-tools/scripts/local-bottom/kill_dropbear_connections
 
 
-#
-#Add an unlock script and autostart it because I keep forgetting the command I'm supposed to type
-#
-cat << DONE > /etc/initramfs-tools/hooks/crypt_unlock.sh
-#!/bin/sh
- 
-PREREQ="dropbear"
- 
-prereqs() {
-    echo "\$PREREQ"
-}
- 
-case "\$1" in
-    prereqs)
-        prereqs
-        exit 0
-    ;;
-esac
- 
-. "\${CONFDIR}/initramfs.conf"
-. /usr/share/initramfs-tools/hook-functions
- 
-if [ "\${DROPBEAR}" != "n" ] && [ -r "/etc/crypttab" ] ; then
-    #run unlock on ssh login
-    echo unlock>>"\${DESTDIR}/etc/profile"
-    #write the unlock script
-    cat > "\${DESTDIR}/bin/unlock" << EOF
-#!/bin/sh
-
-/lib/cryptsetup/askpass 'Enter passphrase: ' > /lib/cryptsetup/passfifo 
-
-EOF
- 
-    chmod +x "\${DESTDIR}/bin/unlock"
-
-    echo On successful unlock this ssh-session will disconnect. >> \${DESTDIR}/etc/motd
-    echo Run \"unlock\" to get passphrase prompt back if you end up in the shell. >> \${DESTDIR}/etc/motd
-fi
-DONE
-chmod +x /etc/initramfs-tools/hooks/crypt_unlock.sh
-
-
 update-initramfs -u -k $(uname -r)
 
 echo "************************************************************************"
