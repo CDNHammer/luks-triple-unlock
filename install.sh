@@ -241,32 +241,7 @@ if [ "\${DROPBEAR}" != "n" ] && [ -r "/etc/crypttab" ] ; then
     cat > "\${DESTDIR}/bin/unlock" << EOF
 #!/bin/sh
 
-# Read passphrase
-read_pass()
-{
-    # Disable echo.
-    stty -echo
-
-    # Set up trap to ensure echo is enabled before exiting if the script
-    # is terminated while echo is disabled.
-    trap 'stty echo' EXIT SIGINT
-
-    # Read passphrase.
-    read "\\\$@"
-
-    # Enable echo.
-    stty echo
-    trap - EXIT SIGINT
-
-    # Print a newline because the newline entered by the user after
-    # entering the passcode is not echoed. This ensures that the
-    # next line of output begins at a new line.
-    echo
-}
-
-printf "Enter passphrase: "
-read_pass password
-echo "\\\$password" >/lib/cryptsetup/passfifo 
+/lib/cryptsetup/askpass 'Enter passphrase: ' > /lib/cryptsetup/passfifo 
 
 EOF
  
