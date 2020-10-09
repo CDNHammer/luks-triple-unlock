@@ -32,3 +32,13 @@ Optional:
   #IP=dhcp
 ```
 - `sudo update-initramfs -u` to apply the changes.
+
+
+Note:
+- If you wish to avoid using a different port for dropbear, I recommend setting the UserKnownHostsFile option in your ~/.ssh/config file.
+```
+Host dropbear
+  Hostname 192.168.1.100
+  User root
+  UserKnownHostsFile ~/.ssh/known_hosts.initramfs
+```
